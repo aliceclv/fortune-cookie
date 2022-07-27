@@ -1,12 +1,16 @@
-<% if user_signed_in? %>
-  <%= button_to "Log that out", destroy_user_session_path, method: :delete %>
-<% end %>
+<div  class="flex items-center w-full justify-end">
+  <% if user_signed_in? %>
+    <%= button_to "Log that out", destroy_user_session_path, method: :delete, class: "py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+  <% end %>
+</div>
 
 <div class="flex items-center w-3/4 m-auto">
   <%= image_tag('fortune-cookie.png', class: 'w-32 md:w-32 lg:w-96') %>
   <h2 class="text-5xl" ><%= @fortune %></h2>
 </div>
-<div>
+
+<div class="flex items-center w-full justify-center mt-16">
 <% unless user_signed_in? %>
-  <%= button_to "Sign up for ONLY good fortune", new_user_registration_path, method: :get %>
+  <%= button_to "Sign up for ONLY good fortune", new_user_registration_path, method: :get, class: 'text-white bg-june-pink focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 focus:outline-none' %>
 <% end %>
+</div>

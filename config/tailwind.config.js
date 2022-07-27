@@ -17,6 +17,7 @@ module.exports = {
       },
       colors: {
         "june-purple": "#8686F9",
+        "june-pink": "#e12cff",
       },
     },
   },
