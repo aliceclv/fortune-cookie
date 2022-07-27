@@ -32,4 +32,5 @@
     }
     juneify("<%= Rails.application.credentials[:june_analytics_write_key] %>");
   </script>
+  <%= yield :after_js %>
 </html>

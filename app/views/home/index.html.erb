@@ -2,3 +2,11 @@
   <%= image_tag('fortune-cookie.png', class: 'w-32 md:w-32 lg:w-96') %>
   <h2 class="text-5xl" ><%= @fortune %></h2>
 </div>
+
+<% content_for :after_js do %>
+  <% if current_user %>
+    <script>
+      window.analytics.identify('<%= current_user.id %>')
+    </script>
+  <% end %>
+<% end %>
