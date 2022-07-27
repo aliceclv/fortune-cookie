@@ -15,6 +15,9 @@ module.exports = {
       container: {
         padding: "2rem",
       },
+      colors: {
+        "june-purple": "#8686F9",
+      },
     },
   },
   plugins: [
