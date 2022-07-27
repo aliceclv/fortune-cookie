@@ -6,7 +6,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -18,4 +17,19 @@
       <%= yield %>
     </div>
   </body>
+  <script>
+    window.analytics = {};
+    function juneify(writeKey) {
+        window.analytics._writeKey = writeKey;
+        var script = document.createElement("script");
+        script.type = "application/javascript";
+        script.onload = function () {
+            window.analytics.page();
+        }
+        script.src = "https://unpkg.com/@june-so/analytics-next/dist/umd/standalone.js";
+        var first = document.getElementsByTagName('script')[0];
+        first.parentNode.insertBefore(script, first);
+    }
+    juneify("<%= Rails.application.credentials[:june_analytics_write_key] %>");
+  </script>
 </html>
