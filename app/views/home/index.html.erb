@@ -1,4 +1,12 @@
+<% if user_signed_in? %>
+  <%= button_to "Log that out", destroy_user_session_path, method: :delete %>
+<% end %>
+
 <div class="flex items-center w-3/4 m-auto">
   <%= image_tag('fortune-cookie.png', class: 'w-32 md:w-32 lg:w-96') %>
   <h2 class="text-5xl" ><%= @fortune %></h2>
 </div>
+<div>
+<% unless user_signed_in? %>
+  <%= button_to "Sign up for ONLY good fortune", new_user_registration_path, method: :get %>
+<% end %>

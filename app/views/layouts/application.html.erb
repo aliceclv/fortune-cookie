@@ -17,6 +17,7 @@
       <%= yield %>
     </div>
   </body>
+
   <script>
     window.analytics = {};
     function juneify(writeKey) {
@@ -24,15 +25,15 @@
         var script = document.createElement("script");
         script.type = "application/javascript";
         script.onload = function () {
-            window.analytics.page();
+          window.analytics.page();
+          <% if current_user %>
+          window.analytics.identify('<%= current_user.id %>')
+          <% end %>
         }
         script.src = "https://unpkg.com/@june-so/analytics-next/dist/umd/standalone.js";
         var first = document.getElementsByTagName('script')[0];
         first.parentNode.insertBefore(script, first);
     }
     juneify("<%= Rails.application.credentials[:june_analytics_write_key] %>");
-    <% if current_user %>
-      window.analytics.identify('<%= current_user.id %>')
-    <% end %>
   </script>
 </html>
