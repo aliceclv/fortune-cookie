@@ -43,5 +43,6 @@ yarn-debug.log*
 !/app/assets/builds/.keep
 
 /config/credentials/production.key
-
 /config/credentials/development.key
+
+.DS_Store
