@@ -31,7 +31,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'tailwindcss-rails'
 
-gem 'juneso-analytics-ruby', '~> 2.4', '>= 2.4.2'
+gem 'analytics-ruby', '~> 2.4.0', :require => 'segment/analytics'
+gem 'june-analytics-ruby', '~> 2.4', '>= 2.4.3'
 gem 'fortune_gem', '~> 0.0.9'
 
 group :development, :test do
