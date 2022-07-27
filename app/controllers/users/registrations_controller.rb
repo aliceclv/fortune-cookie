@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     Analytics.identify(user_id: resource.id, traits: { email: resource.email })
+    Analytics.track(event: 'signed_up', user_id: resource.id, traits: { email: resource.email })
   end
 
   # GET /resource/edit
