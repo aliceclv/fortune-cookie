@@ -31,6 +31,8 @@
         first.parentNode.insertBefore(script, first);
     }
     juneify("<%= Rails.application.credentials[:june_analytics_write_key] %>");
+    <% if current_user %>
+      window.analytics.identify('<%= current_user.id %>')
+    <% end %>
   </script>
-  <%= yield :after_js %>
 </html>
