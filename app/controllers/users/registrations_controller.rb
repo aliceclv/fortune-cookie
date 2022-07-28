@@ -12,8 +12,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    Analytics.identify(user_id: resource.id, traits: { email: resource.email })
-    Analytics.track(event: 'signed_up', user_id: resource.id, traits: { email: resource.email })
+
+    if resource.persisted?
+      Analytics.identify(user_id: resource.id, traits: { email: resource.email })
+      Analytics.track(event: 'signed_up', user_id: resource.id, traits: { email: resource.email })
+    end
   end
 
   # GET /resource/edit
