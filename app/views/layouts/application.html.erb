@@ -21,7 +21,10 @@
     analytics.load("<%= Rails.application.credentials[:segment_analytics_write_key] %>");
     analytics.page();
     <% if current_user %>
-    analytics.identify('<%= current_user.id %>')
+    analytics.identify('<%= current_user.id %>', {
+      foo: 'send_from_frontend',
+      family: 'Lannister'
+    })
     <% end %>
     }}();
   </script>
