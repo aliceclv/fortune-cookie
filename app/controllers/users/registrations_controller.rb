@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
 
     if resource.persisted?
-      Analytics.identify(user_id: resource.id, traits: { email: resource.email })
+      Analytics.identify(user_id: resource.id, traits: { email: resource.email, friend_count: 10 })
       Analytics.track(event: 'signed_up', user_id: resource.id, properties: { email: resource.email, source: 'landing_page' })
     end
   end
